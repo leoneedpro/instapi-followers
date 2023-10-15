@@ -1,0 +1,754 @@
+$color-white:       #f5f5f5
+$color-black:       #202E38
+$color-btn:         #962FBF
+$color-green:       #5CFF80
+$color-red:         #ff5c5c
+$color-border:      #333c45
+$color-start:       #D62976
+$color-stop:        #4F5BD5
+$color-star:        #758595
+
+// ----------------------------------------------
+// РАЗМЕРЫ ЭКРАНА // @include screen ('xs')
+// ----------------------------------------------
+@mixin screen($size)
+    $to-md:     '(max-width: 800px)'
+    $to-modal:  '(max-width: 960px)'
+    // ------------------------------------------
+    
+    @if $size == to-md
+        @media only screen and #{$to-md}
+            @content
+    @if $size == to-modal
+        @media only screen and #{$to-modal}
+            @content
+
+::-webkit-scrollbar
+    display: none
+    -ms-overflow-style: none
+    scrollbar-width: none
+
+html, body
+    position: relative
+    overflow: hidden !important
+    padding: 0
+    margin: 0
+// ----------------------------------------------
+// Обертка над модальным окном
+// ----------------------------------------------
+.insta-wrapper
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+    position: fixed
+    top: 0
+    left: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100%
+    width: 100%
+    background: rgba(0,0,0, .5)
+    z-index: 10000
+    box-sizing: border-box
+    overflow: auto
+    // ------------------------------------------
+    @include screen('to-md')
+        align-items: flex-start
+
+.insta-wrapper *
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+.insta-modal-wrap
+    flex-shrink: 0
+    flex-grow: 0
+    width: 100%
+    min-height: 100%
+    margin: auto
+    display: flex
+    flex-flow: column nowrap
+    align-items: center
+    justify-content: center
+    // ------------------------------------------
+    @include screen('to-md')
+        margin: 0
+
+// ----------------------------------------------
+// Модальное окно
+// ----------------------------------------------
+.insta-modal
+    margin: 20px 0
+    position: relative
+    max-width: 960px
+    border-radius: 12px
+    padding: 40px
+    color: $color-white
+    font-size: 14px
+    font-weight: 400
+    background: linear-gradient(180deg, #28313A 0%, #1D2428 100%)
+    z-index: 1
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.25)
+    transition: max-width .3s ease-in-out
+    overflow: hidden
+    // ------------------------------------------
+    @include screen('to-md')
+        margin: 0
+        border-radius: 0
+        padding: 40px 20px
+        max-width: 600px
+    // ------------------------------------------
+    @include screen('to-modal')
+        margin: 0
+        border-radius: 0
+        padding: 40px 20px
+        height: 100%
+
+.insta-background
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    z-index: -1
+    // ------------------------------------------
+    @include screen('to-md')
+        transform: translate(-70%, -40%)
+
+
+.insta-background svg
+    min-height: 100%
+
+// ----------------------------------------------
+// Header модального окна
+// ----------------------------------------------
+.insta-header
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.insta-title
+    display: flex
+    flex-direction: row
+    align-items: baseline
+    gap: 12px
+    font-size: 36px
+    line-height: 1
+    font-weight: 600
+    // ------------------------------------------
+    @include screen('to-md')
+        flex-direction: column
+        align-items: flex-start
+        gap: 6px
+        font-size: 36px
+
+.insta-title span
+    font-size: 20px
+    line-height: 1.4
+    color: $color-star
+    font-weight: 400
+    // ------------------------------------------
+    @include screen('to-md')
+        font-size: 14px
+
+.insta-close
+    display: block
+    line-height: 0
+    transition: transform .3s ease-in-out
+    cursor: pointer
+    z-index: 10001
+
+.insta-close:hover
+    transform: rotate(90deg)
+
+
+// ----------------------------------------------
+// Секции модального окна
+// ----------------------------------------------
+.insta-section
+    border-top: 1px solid $color-border
+    padding-top: 20px
+    margin-top: 20px
+
+.insta-row
+    position: relative
+    display: flex
+    flex-direction: row
+    align-items: flex-end
+    gap: 40px
+    justify-content: space-between
+    // ------------------------------------------
+    @include screen('to-md')
+        flex-direction: column
+        align-items: center
+        gap: 20px
+
+.insta-row.insta-start
+    align-items: flex-start
+    gap: 20px
+    // ------------------------------------------
+    @include screen('to-md')
+        align-items: center
+        gap: 20px
+
+.insta-row.insta-center
+    align-items: center
+
+.insta-col
+    display: flex
+    flex-direction: row
+    align-items: center
+    gap: 40px
+    // ------------------------------------------
+    @include screen('to-md')
+        flex-direction: column
+        width: 100%
+        gap: 20px
+
+.insta-col.insta-left
+    align-items: flex-start
+
+.insta-col.divider
+    width: 33.333%
+    width: calc( ( 100% - 1px ) / 3 )
+    gap: 20px
+    // ------------------------------------------
+    @include screen('to-md')
+        width: 100%
+        align-items: center
+        gap: 20px
+
+
+.insta-col.divider:before
+    content: ""
+    padding: 0 0
+    border-left: 1px solid $color-border
+    align-self: stretch
+    border-width: 1px
+    // ------------------------------------------
+    @include screen('to-md')
+        border-left: none
+        border-top: 1px solid $color-border
+
+.insta-col.divider:first-child
+    gap: 0
+
+.insta-col.divider:first-child:before
+    content: ""
+    padding: 0
+    border-left: none
+    align-self: stretch
+    border-width: 0
+    // ------------------------------------------
+    @include screen('to-md')
+        border-left: none
+        border-top: none
+
+.insta-col-content
+
+.insta-star
+    margin-top: 8px
+    font-size: 12px
+    font-weight: 400
+    color: $color-star
+
+.insta-col-name
+    font-size: 20px
+    font-weight: 600
+    margin-bottom: 8px
+    // ------------------------------------------
+    @include screen('to-md')
+        margin-bottom: 20px
+
+.insta-col-desc
+    font-size: 14px
+    font-weight: 400
+    line-height: 1.4
+
+// ----------------------------------------------
+// Формы
+// ----------------------------------------------
+form
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+
+// ----------------------------------------------
+// Радио-кнопки
+// ----------------------------------------------
+.insta-radio-group
+    display: inline-flex
+    flex-direction: column
+    gap: 20px
+    // ------------------------------------------
+    @include screen('to-md')
+        flex-direction: row
+
+.insta-radio
+
+
+.insta-radio input[type=radio]
+    display: none
+
+.insta-radio label
+    user-select: none
+    position: relative
+    display: flex
+    justify-content: center
+    flex-direction: column
+    padding-left: 36px
+    user-select: none
+    cursor: pointer
+    transition: filter .3s ease-in-out
+
+.insta-radio label:before
+    content: ""
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translate(0, -50%)
+    display: flex
+    width: 20px
+    height: 20px
+    background: transparent
+    border: 2px solid $color-btn
+    border-radius: 50%
+    transition: filter .3s ease-in-out
+
+.insta-radio label div
+    font-size: 14px
+    font-weight: 400
+
+.insta-radio label span
+    font-size: 12px
+    font-weight: 400
+    // ------------------------------------------
+    @include screen('to-md')
+        display: none
+ 
+/* Checked */
+.insta-radio input[type=radio]:checked + label:after
+    content: ""
+    border-radius: 50%
+    position: absolute
+    top: 50%
+    left: 12px
+    transform: translate(-50%, -50%)
+    border: 6px solid $color-btn
+
+/* Hover */
+.insta-radio label:hover:before
+    filter: brightness(120%)
+    transition: filter .3s ease-in-out
+ 
+/* Disabled */
+.insta-radio input[type=radio]:disabled + label
+    color: $color-star
+    cursor: default
+.insta-radio input[type=radio]:disabled + label:before
+    border-color: $color-star
+    cursor: default
+.insta-radio input[type=radio]:disabled:hover + label:before
+    filter: brightness(100%)
+    border-color: $color-star
+    background: transparent
+    transition: filter .3s ease-in-out
+
+insta-radio p
+    margin: 0
+    padding: 0
+
+// ----------------------------------------------
+// Информация по аккаунту сбора
+// ----------------------------------------------
+.insta-account
+    display: flex
+    align-items: flex-start
+    gap: 20px
+
+.insta-account-image
+    position: relative
+    line-height: 0
+
+.insta-account-image img
+    position: relative
+    height: 100px
+    width: 100px
+    background: $color-white
+    outline: none
+    border: none
+    border-radius: 100px
+    z-index: 3
+
+.insta-insta-back
+    height: 110%
+    width: 110%
+    background: linear-gradient(40.46deg, #FEDA75 14.96%, rgba(243, 110, 46, 0.822917) 27.19%, #D62976 59.56%, #962FBF 70.72%, #4F5BD5 84.03%)
+    border-radius: 100px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 1
+
+.insta-black-back
+    height: 105%
+    width: 105%
+    background: $color-black
+    border-radius: 100px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 1
+
+.insta-account-data
+    display: flex
+    flex-direction: column
+    gap: 6px
+
+.insta-account-name
+    font-size: 20px
+    font-weight: 600
+    margin-bottom: 6px
+    white-space: nowrap
+
+.insta-account-private,
+.insta-account-followers,
+.insta-account-following,
+.insta-account-posts
+    white-space: nowrap
+
+.insta-private-false
+    color: $color-green
+
+.insta-private-true
+    color: $color-red
+
+// ----------------------------------------------
+// Инпуты и кнопки
+// ----------------------------------------------
+
+.insta-checkbox input[type=checkbox]
+    display: none
+
+.insta-checkbox label
+    cursor: pointer
+    width: 100px
+    height: 40px
+    background: $color-border
+    display: block
+    border-radius: 100px
+    position: relative
+    transition: filter .3s ease-in-out
+
+.insta-checkbox label:hover
+    filter: brightness(120%)
+
+.insta-checkbox label:after
+    content: ''
+    position: absolute
+    top: 5px
+    left: 5px
+    width: 30px
+    height: 30px
+    background: $color-white
+    border-radius: 90px
+    transition: 0.3s
+
+
+.insta-checkbox input:checked + label
+    background: $color-btn
+
+
+.insta-checkbox input:checked + label:after
+    left: calc(100% - 5px)
+    transform: translateX(-100%)
+
+
+.insta-checkbox label:active:after
+    width: 90px
+
+.insta-request input[type="number"]::-webkit-outer-spin-button,
+.insta-request input[type="number"]::-webkit-inner-spin-button
+    -webkit-appearance: none
+    margin: 0
+
+.insta-request input[type="number"]
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+    outline: none
+    height: 40px
+    width: 130px
+    text-align: center
+    color: $color-white
+    background: $color-border
+    border: none
+    border-radius: 4px
+    font-size: 14px
+    font-weight: 400
+    // ------------------------------------------
+    @include screen('to-md')
+        width: 100%
+
+// ----------------------------------------------
+// Секция точка остановки
+// ----------------------------------------------
+.insta-endpoint
+    display: flex
+    flex-direction: row
+    align-items: center
+    gap: 12px
+    margin-top: 8px
+    width: 100%
+    // ------------------------------------------
+    @include screen('to-md')
+        flex-direction: column
+        align-items: center
+        margin-top: 20px
+        gap: 12px
+
+.insta-endpoint input[type="text"]
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+    outline: none
+    height: 40px
+    width: 450px
+    text-align: left
+    color: $color-white
+    background: $color-border
+    border: none
+    border-radius: 4px
+    font-size: 14px
+    font-weight: 400
+    padding: 0 12px
+    // ------------------------------------------
+    @include screen('to-md')
+        width: 100%
+        max-width: 400px
+
+.insta-btn
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+    user-select: none
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 40px
+    width: 130px
+    border: none
+    border-radius: 4px
+    font-size: 14px
+    line-height: 1
+    font-weight: 400
+    text-decoration: none
+    background: $color-btn
+    color: $color-white
+    white-space: nowrap
+    cursor: pointer
+    transition: filter .3s ease-in-out
+    // ------------------------------------------
+    @include screen('to-md')
+        width: 100%
+        max-width: 400px
+
+.insta-btn:hover
+    text-decoration: none
+    filter: brightness(120%)
+
+// ----------------------------------------------
+// Кнопка пуска
+// ----------------------------------------------
+.insta-start-wrapper
+    position: relative
+    z-index: 0
+    background: none
+    outline: 0
+    border: 0
+    cursor: pointer
+    // ------------------------------------------
+    @include screen('to-md')
+        padding: 40px 0
+        margin: 0 auto
+
+.insta-start-emitter
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+    user-select: none
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 20px
+    font-weight: 600
+    text-transform: uppercase
+    color: $color-white
+    margin: 0 auto
+    width: 130px
+    height: 130px
+    border: none
+    border-radius: 300px
+    background-color: $color-start
+    cursor: pointer
+    transition: filter .3s ease-in-out
+
+.insta-start-emitter:hover
+    filter: brightness(120%)
+    transition: .3s ease-in-out
+
+.insta-start-wrapper.toggle .insta-start-emitter
+    background-color: $color-stop
+
+.insta-start-wrapper.ready .insta-start-emitter
+    background-color: $color-green
+    color: $color-black
+
+.insta-start-wave
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 150px
+    height: 150px
+    border-radius: 100px
+    background-color: $color-start
+    opacity: .1
+    z-index: -1
+    pointer-events: none
+
+.insta-start-wrapper.toggle .insta-start-wave
+    background-color: $color-stop
+
+.insta-start-wrapper.ready .insta-start-wave
+    background-color: $color-green
+    
+
+.insta-start-wave
+    animation: instaSonar 2s linear infinite
+
+@keyframes instaSonar
+    0%
+        opacity: .1
+    50%
+        transform: translate(-50%, -50%)
+        opacity: .5
+    100%
+        opacity: .1
+
+// ----------------------------------------------
+// Секция информации по сбору
+// ----------------------------------------------
+ul.insta-console
+    list-style: none
+    padding: 0
+    margin: 0
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    justify-content: space-between
+    gap: 40px
+    // ------------------------------------------
+    @include screen('to-md')
+        flex-direction: column
+        align-items: flex-start
+        gap: 12px
+
+ul.insta-console li
+    display: flex
+    align-items: center
+    gap: 6px
+    font-size: 14px
+
+ul.insta-console li span
+    font-size: 16px
+    font-weight: 400
+
+ul.insta-footer
+    list-style: none
+    padding: 0
+    margin: 0
+    font-weight: 400
+    font-size: 12px
+    font-weight: 400
+    line-height: 1.4
+    color: $color-star
+    // ------------------------------------------
+    @include screen('to-md')
+        margin: 0 auto
+
+ul.insta-footer a.insta-link
+    color: $color-star
+    text-decoration: none
+
+ul.insta-footer a.insta-link:hover
+    color: $color-stop
+    filter: brightness(120%)
+    transition: filter .3s ease-in-out
+
+
+ul.insta-footer.insta-footer-right
+    text-align: right
+    // ------------------------------------------
+    @include screen('to-md')
+        text-align: left
+
+
+.pay-coffee
+    position: relative
+    user-select: none
+    height: 40px
+    display: flex
+    align-items: center
+    gap: 12px
+    font-size: 14px
+    font-weight: 400
+    color: $color-white
+    text-decoration: none
+    background: linear-gradient(180deg, #303b46 0%, #1d252a 100%)
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 25%)
+    padding: 12px 20px 12px 60px
+    border-radius: 4px
+    width: 100%
+    line-height: 0
+    transition: filter .3s ease-in-out
+
+
+.pay-coffee svg
+    height: 50px
+    position: absolute
+    top: 50%
+    left: 12px
+    transform: translate(0, -50%)
+
+.pay-coffee:hover
+    text-decoration: none
+    filter: brightness(120%)
+
+
+.loading-block
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 50px
+    display: none
+    justify-content: center
+    align-items: center
+    background: rgba(0,0,0,.5)
+    height: 100%
+    width: 100%
+    z-index: 10000
+
+.loading-block.active
+    display: flex
+
+.donut
+    display: inline-block
+    border: 4px solid rgba($color-white, 1)
+    border-left-color: $color-start
+    border-radius: 50%
+    width: 80px
+    height: 80px
+    animation: donut-spin 1s linear infinite
+
+@keyframes donut-spin
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
