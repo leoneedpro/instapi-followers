@@ -1,7 +1,7 @@
 
 ![instapi-followers](/readme/images/banner.jpg)
 
-# Instaparser-followers
+# Instapi-followers
 **Версия:** 1.0<br>
 **Описание:** Instagram-парсер, сбор подписчиков и подписок на основе fetch-запросов с интерфейсом управления и возможностью скачать данные в формате JSON или Excel (CSV)<br><br>
 [![buymeacoffee](/readme/images/buymeacoffee.png)](https://pay.mysbertips.ru/72317565)
