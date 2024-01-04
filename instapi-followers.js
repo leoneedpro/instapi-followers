@@ -19,8 +19,8 @@ div.innerHTML = '<div class=insta-wrapper><div class=insta-modal-wrap><div class
 // ----------------------------------------------
 // Добавляем элементы стилей, структуры в DOM
 // ----------------------------------------------
-style.className = 'j-instaparser'
-div.className = 'j-instaparser'
+style.className = 'j-instapi'
+div.className = 'j-instapi'
 document.body.append(style)
 document.body.append(div)
 
@@ -57,7 +57,7 @@ consoleDivider = consoleDivider.fill('-').join('')
 // Событие: При нажатии на кнопку закрытия окна
 // ----------------------------------------------
 document.querySelector('.j-insta-close').onclick = function() {
-    document.querySelectorAll('.j-instaparser').forEach(e => e.remove())
+    document.querySelectorAll('.j-instapi').forEach(e => e.remove())
 }
 
 // ----------------------------------------------
