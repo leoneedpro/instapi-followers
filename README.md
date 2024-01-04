@@ -1,16 +1,16 @@
 
-![instaparser-followers](/readme/images/banner.jpg)
+![instapi-followers](/readme/images/banner.jpg)
 
-# Instaparser-followers
-**Версия:** 1.0-beta<br>
+# instapi-followers
+**Версия:** 1.0<br>
 **Описание:** Instagram-парсер, сбор подписчиков и подписок на основе fetch-запросов с интерфейсом управления и возможностью скачать данные в формате JSON или Excel (CSV)<br><br>
 [![buymeacoffee](/readme/images/buymeacoffee.png)](https://pay.mysbertips.ru/72317565)
 
 ### Состав проекта:
 - каталог [`/readme/images`](/readme/images/) содержит изображения для файла [`readme.md`](README.md)
 - каталог [`/src-interface`](/src-interface) содержит исходный код интерфейса
-- файл [`instaparser-followers.js`](instaparser-followers.js) - полный код скрипта
-- файл [`instaparser-followers.min.js`](instaparser-followers.min.js) - предпочтительный (сжатый)
+- файл [`instapi-followers.js`](instapi-followers.js) - полный код скрипта
+- файл [`instapi-followers.min.js`](instapi-followers.min.js) - предпочтительный (сжатый)
 
 ### Во избежание блокировки
 > Старайтесь не использовать личный аккаунт для сбора данных и не превышайте лимиты Instagram. Сбор данных осуществляется только с открытого аккаунта, либо вы должны быть на него подписаны.
@@ -23,8 +23,8 @@
 <sub>(CTRL-SHIFT-J для Windows, OPTION-COMMAND-J для MacOS)</sub>
 4. После, в открывшемся окне, переходим на вкладку **Консоль (Console)**
 5. В открывшуюся консоль, вставляем код скрипта:<br><br>
-[`instaparser-followers.js`](instaparser-followers.js) <sub>- полный код скрипта</sub><br>
-[`instaparser-followers.min.js`](instaparser-followers.min.js) <sub>- предпочтительный (без лишнего и сжатый)</sub><br><br>
+[`instapi-followers.js`](instapi-followers.js) <sub>- полный код скрипта</sub><br>
+[`instapi-followers.min.js`](instapi-followers.min.js) <sub>- предпочтительный (без лишнего и сжатый)</sub><br><br>
 6. Нажимаем клавишу **ENTER** и на странице появится интерфейс парсера
 7. Настраиваем параметры сбора и нажимаем на кнопку **СТАРТ**
 
@@ -32,10 +32,10 @@
 В интерфейсе парсера по-каждому параметру настройки написано примечание.<br>
 Разберем каждый параметр в отдельности.
 
-![full-parser](/readme/images/instaparser_01.jpg)
+![full-parser](/readme/images/instapi_01.jpg)
 
 ## Информация и параметры по аккаунту сбора
-![first-block](/readme/images/instaparser_02.jpg)
+![first-block](/readme/images/instapi_02.jpg)
 <br>
 В данном разделе представлена общая **информация по аккаунту** сбора, 
 а также параметры настройки **Сбор данных** и **Формат данных**<br><br>
@@ -67,7 +67,7 @@
 **Скачать данные**, а от выбора зависит формат файла при скачивании собранных данных.
 
 ## Ограничение кол-ва запросов
-![limit-requests](/readme/images/instaparser_03.jpg)
+![limit-requests](/readme/images/instapi_03.jpg)
 <br>
 В данном разделе представлен параметр отвечающий за **ограничение кол-ва запросов** 
 при сборе данных. Ограничение нужно, чтобы не попасть под блокировку.<br><br>
@@ -79,7 +79,7 @@
 запросов - очистите значение в поле или поставьте 0.
 
 ## Имитация человека
-![imitation](/readme/images/instaparser_04.jpg)
+![imitation](/readme/images/instapi_04.jpg)
 <br>
 В данном разделе представлен параметр отвечающий за возможность отправки запросов с разными интервалами (от 1 до 8 секунд), 
 т.е. **имитирует деятельность человека, а не программы** при сборе данных. По умолчанию запросы отправляются без задержек.
@@ -88,7 +88,7 @@
 данных увеличится. Данный параметр можно **включать/отключать** в любой момент времени.
 
 ## Точка остановки и кнопка СТАРТ
-![endpoint](/readme/images/instaparser_05.jpg)
+![endpoint](/readme/images/instapi_05.jpg)
 <br>
 В данном разделе представлен параметр отвечающий за возможность начать сбор данных с места прерывания - **Точка остановки**
  и кнопка запуска работы самого парсера - кнопка **СТАРТ**.<br>
@@ -116,7 +116,7 @@
 `ГОТОВО` <sub>- появляется при выполнении сбора данных</sub><br>
 
 ## Статистика и сохранение данных
-![statistics](/readme/images/instaparser_06.jpg)
+![statistics](/readme/images/instapi_06.jpg)
 <br>
 В данном разделе представлены краткая информация по статистике сбора данных и кнопка для скачмвания собранных данных **Скачать данные**.
 
@@ -134,7 +134,7 @@
 именно в том формате, который выбрали.
 
 # Консоль
-![console](/readme/images/instaparser_07.jpg)
+![console](/readme/images/instapi_07.jpg)
 <br>
 В консоле браузера, выводятся логи работы парсера, данные по отправленным запросам и разного рода техническая информация,
 включая ошибки.
